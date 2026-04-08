@@ -1,0 +1,421 @@
+
+:root {
+  --color-primary: #eb1958; /* สีหลัก */
+  --color-secondary: #ffc445; /* สีรอง */
+  --color-background: #0e0e0e; /* สีพื้นหลัง */
+  --color-text: #ffffff; /* สีข้อความ */
+  --color-border: #eb1958; /* สีขอบ */
+  --color-button-bg: #ffc445; /* สีพื้นหลังปุ่ม */
+  --color-button-text: #ffffff; /* สีข้อความปุ่ม */
+  --color-button-hover-bg: #ffffff; /* สีพื้นหลังปุ่มเมื่อเม้าส์ไปชี้ */
+  --color-button-hover-text: #000000; /* สีข้อความปุ่มเมื่อเม้าส์ไปชี้ */
+  --delay-second: 0.75s; /* เวลาหน่วง */
+}
+
+@font-face {
+  font-family: sov-monomon; /* ชื่อฟอนต์ */
+  src: url('font/SOV_monomon-hinted.ttf') format('truetype'), /* ที่อยู่ของฟอนต์ */ 
+       url('SOV_monospace-hinted.ttf') format('truetype'); /* ที่อยู่ของฟอนต์ */
+  font-weight: normal; /* น้ำหนักฟอนต์ */
+  font-style: normal; /* รูปแบบฟอนต์ */
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: 'sov-monomon', sans-serif;
+  background-color: var(--color-background); /* สีพื้นหลัง */
+  color: var(--color-text); /* สีข้อความ */
+}
+
+header.top-bar {
+  background-color: var(--color-background); /* สีพื้นหลัง */
+  border-bottom-style:solid;
+  border-color: var(--color-border);
+  position: fixed; /* ทำให้แถบอยู่ด้านบน */
+  z-index: 2000;
+  width: calc(100% - 3rem);
+  max-height: 30px; /* ความสูงสูงสุดของแถบ */
+  padding: 0.75rem 1.5rem;
+  display: flex;
+  justify-content: space-between; /* จัดตำแหน่งให้อยู่ตรงกลาง */
+  align-items: center;
+}
+
+nav ul {
+  list-style: none; /* เอาสัญลักษณ์หัวข้อย่อยออก */
+  padding: 2px;
+  display: flex; /* ทำให้รายการเรียงกันในแนวนอน */
+  border-radius: 5px; /* ขอบมน */
+  border-color: var(--color-border); /* สีขอบ */
+  border-style: solid; /* สไตล์ขอบ */
+  border-width: 2px; /* ขนาดขอบ */
+  li {
+    margin: 2px; /* ระยะห่างระหว่างรายการ */
+    a {
+      display: block; /* ทำให้ลิงก์เต็มพื้นที่ของ li */
+      padding: 10px 20px; /* ระยะห่างภายในปุ่ม */
+      text-decoration: none; /* เอาเส้นใต้ลิงก์ออก */
+      background-color: var(--color-button-bg); /* สีพื้นหลังปุ่ม */
+      color: var(--color-button-text); /* สีตัวอักษร */
+      border-radius: 5px; /* ขอบมน */
+      text-align: center; /* จัดข้อความให้อยู่ตรงกลาง */
+      transition: background-color color filter var(--delay-second) ease; /* เพิ่มเอฟเฟกต์การเปลี่ยนสี */
+      display: block; /* ทำให้ลิงก์เต็มพื้นที่ของ li */
+    }
+    a:hover {
+      background-color: var(--color-button-hover-bg); /* สีพื้นหลังเมื่อเม้าส์ไปชี้ */
+      color: var(--color-button-hover-text); /* สีตัวอักษรเมื่อเม้าส์ไปชี้ */
+      img {
+        filter: invert(0%); /* สีภาพของรูปเมื่อเม้าส์ไปชี้ */
+      }
+    }
+  }
+}
+
+nav#h ul {
+  display: flex;
+  align-items: center; /* จัดรายการให้อยู่ตรงกลางในแนวนอน */
+  flex-direction: row; /* ให้การแสดงผลประเภทนี้มาเป็นแนวนอน */
+  li {
+    display: flex;
+    align-items: center; /* จัดรายการให้อยู่ตรงกลางในแนวนอน */
+    justify-content: center;
+    a {
+      display: flex;
+      align-items: center;
+      width: 6em;
+      height: 10px;
+      text-wrap: wrap; /* ข้อความขึ้นบรรทัดใหม่เมื่อเต็ม */
+      img {
+        width: 1.3em;
+        height: 1.3em;
+        display: flex;
+        margin: 0 -5px;
+        transform: translateX(-50%);
+      }
+    }
+  }
+}
+
+nav#v ul {
+  display: flex;
+  justify-content: center; /* จัดรายการให้อยู่ตรงกลางในแนวตั้ง */
+  flex-direction: column; /* ให้การแสดงผลประเภทนี้มาเป็นแนวตั้ง */
+  #sidemenu {
+    height: 10em;
+  }
+  li {
+    display: flex;
+    justify-content: center;
+    a {
+      display: flex;
+      align-items: center;
+      width: 10em;
+    }
+  }
+}
+
+img.invert {
+  filter: invert(100%);
+}
+
+.top-bar {
+  .logo {
+    display: flex;
+    align-items: center;
+    img {
+      width: 5.5rem; /* ขนาดของโลโก้ */
+      height: auto; /* ให้ความสูงปรับตามอัตราส่วน */
+      margin-right: 0.5rem; /* ระยะห่างระหว่างโลโก้และชื่อ */
+    }
+  }
+}
+
+.header-buttons {
+  position: sticky;
+  display: flex;
+  gap: 0.5rem;
+  button {
+    background-color: var(--color-button-bg);
+    color: var(--color-button-text);
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+}
+
+.menu-toggle {
+  display: block;
+  background-color: var(--color-button-bg);
+  color: var(--color-button-text);
+  border: none;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.side-bar {
+  background-color: var(--color-background);
+  border-right-style: solid;
+  border-color: var(--color-border);
+  padding: 1rem;
+  position: fixed;
+  top: 0.25rem;
+  bottom: auto;
+  width: 175px;
+  height: 100%;
+  transform: translateX(-100%); /* ทำให้เมนูเลื่อนออกไป */
+  transition: transform 0.3s ease; /* เพิ่มเอฟเฟกต์การเลื่อน */
+  z-index: 1000; /* ทำให้เมนูอยู่ด้านหน้า */
+}
+
+.side-bar.active { /* สถานะเมนูเมื่อถูกเปิด */
+  transform: translateX(0); /* ทำให้เมนูเลื่อนเข้ามา */
+}
+
+.side-bar ul {
+  margin-top: 8rem; /* ระยะห่างด้านบนของรายการ */
+}
+
+header {
+  button {
+    transition: background-color color filter 0.3s ease; /* เพิ่มเอฟเฟกต์การเปลี่ยนสี */
+  }
+  button:hover img {
+    filter: invert(0%); /* สีภาพของรูปเมื่อเม้าส์ไปชี้ */
+  }
+  button:hover {
+    background-color: var(--color-button-hover-bg); /* สีพื้นหลังเมื่อเม้าส์ไปชี้ */
+    color: var(--color-button-hover-text); /* สีตัวอักษรเมื่อเม้าส์ไปชี้ */
+  }
+}
+
+aside.side-bar {
+  position: fixed;
+  z-index: 500; /* ทำให้แถบด้านข้างอยู่ด้านหน้า */
+  button {
+    transition: background-color color filter 0.3s ease; /* เพิ่มเอฟเฟกต์การเปลี่ยนสี */
+  }
+  button:hover img {
+    filter: invert(0%); /* สีภาพของรูปเมื่อเม้าส์ไปชี้ */
+  }
+  button:hover {
+    background-color: var(--color-button-hover-bg); /* สีพื้นหลังเมื่อเม้าส์ไปชี้ */
+    color: var(--color-button-hover-text); /* สีตัวอักษรเมื่อเม้าส์ไปชี้ */
+  }
+}
+
+main.content {
+  margin-left: 0;
+}
+
+@keyframes logospin {
+  0% {
+    filter: drop-shadow(0 0 5rem var(--color-button-bg)); /* เงาโลโก้ */
+    transform: rotate(0deg); /* เริ่มต้นที่ 0 องศา */
+  }
+  25% {
+    filter: drop-shadow(0 0 5rem var(--color-border)); /* เงาโลโก้ */
+    transform: rotate(90deg); /* หมุน 90 องศา */
+  }
+  50% {
+    filter: drop-shadow(0 0 5rem var(--color-button-bg)); /* เงาโลโก้ */
+    transform: rotate(180deg); /* หมุนครึ่งรอบ */
+  }
+  75% {
+    filter: drop-shadow(0 0 5rem var(--color-border)); /* เงาโลโก้ */
+    transform: rotate(270deg); /* หมุน 270 องศา */
+  }
+  100% {
+    filter: drop-shadow(0 0 5rem var(--color-button-bg)); /* เงาโลโก้ */
+    transform: rotate(360deg); /* หมุนครบ 360 องศา */
+  }
+}
+
+main.content img.header-logo {
+  width: 30%; /* ขนาดของโลโก้ */
+  height: auto; /* ให้ความสูงปรับตามอัตราส่วน */
+  display: block; /* ทำให้โลโก้แสดงเป็นบล็อก */
+  align-items: center; /* จัดตำแหน่งโลโก้ให้อยู่ตรงกลาง */
+  margin: 0 auto; /* จัดตำแหน่งโลโก้ให้อยู่ตรงกลาง */
+  padding: 0.5rem; /* ระยะห่างรอบๆ โลโก้ */
+  margin-top: 50px; /* ระยะห่างด้านบนของโลโก้ */
+  margin-bottom: 10px; /* ระยะห่างด้านบนของโลโก้ */
+  filter: drop-shadow(0 0 5rem var(--color-button-bg)); /* เงาโลโก้ */
+  animation: logospin 5s linear infinite; /* การหมุนโลโก้ */
+}
+
+main.content img.invert {
+  width: 40%; /* ขนาดของโลโก้ */
+  height: auto; /* ให้ความสูงปรับตามอัตราส่วน */
+  display: block; /* ทำให้โลโก้แสดงเป็นบล็อก */
+  align-items: center; /* จัดตำแหน่งโลโก้ให้อยู่ตรงกลาง */
+  margin: 0 auto; /* จัดตำแหน่งโลโก้ให้อยู่ตรงกลาง */
+  padding: 0.25rem; /* ระยะห่างรอบๆ โลโก้ */
+  filter: drop-shadow(0 0 2.5rem var(--color-button-bg)) invert(100%); /* เงาโลโก้ */
+}
+
+button {
+  font-family: 'sov-monomon', sans-serif;
+}
+
+.sidebar-buttons {
+  margin-top: 6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  button {
+    background-color: var(--color-border);
+    color: var(--color-button-text);
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+} 
+
+.content {
+  margin-left: 220px;
+  padding: 1rem;
+  text-wrap: wrap; /* ข้อความขึ้นบรรทัดใหม่เมื่อเต็ม */
+  transition: background-color color filter var(--delay-second) ease; /* เพิ่มเอฟเฟกต์การเปลี่ยนสี */
+}
+
+p {
+  a.button {
+    color: var(--color-button-bg); /* สีข้อความ */
+    padding: 4px 12px; /* ระยะห่างภายในปุ่ม */
+    text-align: center; /* จัดตำแหน่งข้อความ */
+    text-decoration: none; /* ลบขีดเส้นใต้ลิงค์ */
+    display: inline-block; /* ทำให้ปุ่มอยู่ในบรรทัดเดียว */
+    font-size: 16px; /* ขนาดตัวอักษร */
+    border-radius: 7.5px; /* มุมโค้งของปุ่ม */
+    transition: all color filter var(--delay-second) ease; /* เพิ่มเอฟเฟกต์การเปลี่ยนสี */
+  }
+  a.button:hover {
+    color: var(--color-border); /* สีข้อความเมื่อเม้าส์ไปชี้ */
+    filter: invert(0%);
+  }
+}
+
+p.center {
+  text-align: center; /* จัดตำแหน่งข้อความให้อยู่ตรงกลาง */
+  margin: 1rem 0; /* ระยะห่างด้านบนและล่าง */
+}
+
+.footer {
+  background-color: var(--color-background); /* สีพื้นหลัง */
+  border-top-style: solid;
+  border-color: var(--color-border);
+  padding: 1rem 0;
+  text-align: center;
+  position: static;
+  bottom: 0;
+  width: 100%;
+  z-index: 2000;
+}
+
+.footer img.invert {
+  width: 100px; /* ขนาดของโลโก้ */
+  height: auto; /* ให้ความสูงปรับตามอัตราส่วน */
+  display: inline-block; /* ทำให้โลโก้แสดงเป็นบล็อก */
+}
+
+@media (max-width: 768px) {
+  .menu-toggle {
+      display: block;
+  }
+
+  header h1 {
+    transform: translateX(25%);
+    line-break: anywhere;
+    line-height: 0;
+    color: transparent;
+  }
+
+  .top-bar {
+    .logo {
+      margin: 1px 0;
+    }
+  }
+
+  nav#h.header-buttons {
+    padding: 10px;
+    ul {
+      display: flex;
+      li {
+        a {
+          font-size: small;
+          padding: 0.5em 0.7em;
+          width: 20px;
+          height: 20px;
+          padding-left: 10px;
+          img {
+            font-size: medium;
+            margin: 50%;
+            transform: translateX(-50%);
+          }
+        }
+        a.iconed {
+          line-break: anywhere;
+          line-height: 0;
+        }
+      }
+    }
+  }
+
+  .side-bar {
+    padding: 1rem;
+    width: 175px;
+    height: 100%;
+    position: fixed;
+    top: 0.5rem;
+    bottom: auto;
+    transform: translateX(-100%);
+    border-style: none;
+    border-right-style: solid;
+  }
+
+  .side-bar.active {
+      transform: translateX(0);
+  }
+
+  .content {
+      margin-left: 0;
+      padding-top: 60px;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  body {
+    background-color: var(--color-text); /* สีพื้นหลังสำหรับโหมดสว่าง */
+    color: var(--color-background); /* สีข้อความสำหรับโหมดสว่าง */
+  }
+
+  header.top-bar {
+    background-color: var(--color-text); /* สีพื้นหลังสำหรับโหมดสว่าง */
+    border-bottom-color: var(--color-border); /* สีขอบสำหรับโหมดสว่าง */
+  }
+
+  .side-bar {
+    background-color: var(--color-text); /* สีพื้นหลังสำหรับโหมดสว่าง */
+    border-right-color: var(--color-border); /* สีขอบสำหรับโหมดสว่าง */
+  }
+
+  main.content {
+    background-color: var(--color-text); /* สีพื้นหลังสำหรับโหมดสว่าง */
+    color: var(--color-background); /* สีข้อความสำหรับโหมดสว่าง */
+  }
+
+  .footer {
+    background-color: var(--color-text); /* สีพื้นหลังสำหรับโหมดสว่าง */
+    color: var(--color-background); /* สีข้อความสำหรับโหมดสว่าง */
+  }
+
+  img.invert {
+    filter: invert(0%); /* ไม่ต้องกลับสีสำหรับโหมดสว่าง */
+  }
+}
+
