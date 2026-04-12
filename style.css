@@ -67,7 +67,7 @@ nav ul {
       background-color: var(--color-button-hover-bg); /* สีพื้นหลังเมื่อเม้าส์ไปชี้ */
       color: var(--color-button-hover-text); /* สีตัวอักษรเมื่อเม้าส์ไปชี้ */
       img {
-        filter: invert(0%); /* สีภาพของรูปเมื่อเม้าส์ไปชี้ */
+        filter: invert(100%); /* สีภาพของรูปเมื่อเม้าส์ไปชี้ */
       }
     }
   }
@@ -117,7 +117,11 @@ nav#v ul {
 }
 
 img.invert {
-  filter: invert(0%);
+  filter: invert(100%);
+}
+
+img.un-invert {
+  filter: invert(0%); /* ไม่ต้องกลับสีสำหรับโหมดสว่าง */
 }
 
 .top-bar {
@@ -247,7 +251,7 @@ main.content img.header-logo {
   animation: logospin 5s linear infinite; /* การหมุนโลโก้ */
 }
 
-main.content img.invert {
+main.content img.un-invert {
   width: 40%; /* ขนาดของโลโก้ */
   height: auto; /* ให้ความสูงปรับตามอัตราส่วน */
   display: block; /* ทำให้โลโก้แสดงเป็นบล็อก */
@@ -415,6 +419,9 @@ p.center {
   }
 
   img.invert {
+    filter: invert(0%); /* ไม่ต้องกลับสีสำหรับโหมดสว่าง */
+  }
+  img.un-invert {
     filter: invert(100%); /* ไม่ต้องกลับสีสำหรับโหมดสว่าง */
   }
 }
